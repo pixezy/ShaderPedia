@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShaderParam" load_steps=2 format=3 uid="uid://belvcdmgq0a87"]
+
+[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="1_jx63d"]
+
+[resource]
+script = ExtResource("1_jx63d")
+label = ""
+control = 0
+shader_var = ""

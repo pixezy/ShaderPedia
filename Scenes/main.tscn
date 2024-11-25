@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2l837qmj635w"]
+
+[ext_resource type="Script" uid="uid://gxkhndv1yyu6" path="res://Scripts/scroll_container.gd" id="1_eg45s"]
+[ext_resource type="PackedScene" uid="uid://bl4dw0cyh17mq" path="res://Scenes/background.tscn" id="1_go8r5"]
+[ext_resource type="Script" uid="uid://dl75pycq64ovc" path="res://Scripts/grid_container.gd" id="1_qdimp"]
+[ext_resource type="Shader" uid="uid://cf3k7dqq66tuj" path="res://Shaders/_Main/text.gdshader" id="3_m04i5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_my4vq"]
+shader = ExtResource("3_m04i5")
+shader_parameter/color = Color(2.88785e-07, 0.565962, 0.809459, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_rfdky"]
+font_names = PackedStringArray("Exo 2")
+font_weight = 575
+font_stretch = 50
+force_autohinter = true
+oversampling = 2.0
+
+[sub_resource type="SystemFont" id="SystemFont_eyf5b"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" parent="." instance=ExtResource("1_go8r5")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+clip_contents = false
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_eg45s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_my4vq")
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.22, 0.22, 1)
+theme_override_fonts/font = SubResource("SystemFont_rfdky")
+theme_override_font_sizes/font_size = 50
+text = "ShaderPedia"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 24
+script = ExtResource("1_qdimp")
+_spacing = 30
+
+[node name="LinkButton" type="LinkButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 412.0
+offset_top = 18.0
+offset_right = 504.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_eyf5b")
+theme_override_font_sizes/font_size = 16
+text = "Google.com"
+uri = "https://www.google.com"

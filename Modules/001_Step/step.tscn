@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bduqxphov0aiw"]
+
+[ext_resource type="Script" path="res://Scripts/shader_scene.gd" id="1_pkw4h"]
+[ext_resource type="Script" path="res://Scripts/actions_lib.gd" id="2_e61no"]
+[ext_resource type="Texture2D" uid="uid://ba67ts6vyoo77" path="res://Sprites/white500.png" id="2_p6qr3"]
+[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="2_tg45r"]
+[ext_resource type="Shader" path="res://Modules/001_Step/step.gdshader" id="3_m4n71"]
+
+[sub_resource type="Resource" id="Resource_bkktg"]
+script = ExtResource("2_tg45r")
+label = "Step"
+control = 0
+shader_var = "_step"
+metadata/_custom_type_script = ExtResource("2_tg45r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpfdd"]
+shader = ExtResource("3_m4n71")
+shader_parameter/_step = 0.5
+
+[node name="Step" type="Node2D"]
+
+[node name="ShaderScene" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_pkw4h")
+type = "2D"
+sprite = NodePath("../Sprite2D")
+shader_params = Array[ExtResource("2_tg45r")]([SubResource("Resource_bkktg")])
+
+[node name="ActionsLib" type="Node" parent="."]
+script = ExtResource("2_e61no")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dpfdd")
+position = Vector2(250, 250)
+texture = ExtResource("2_p6qr3")

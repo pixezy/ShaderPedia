@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://1ckugevudqmp"]
+
+[ext_resource type="Script" path="res://Scripts/shader_scene.gd" id="1_jl7st"]
+[ext_resource type="Texture2D" uid="uid://ba67ts6vyoo77" path="res://Sprites/white500.png" id="2_4cown"]
+[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="2_i7tph"]
+[ext_resource type="Shader" path="res://Modules/000_UVs/UVxy.gdshader" id="2_pxshj"]
+[ext_resource type="Script" path="res://Scripts/actions_lib.gd" id="4_nc62y"]
+
+[sub_resource type="Resource" id="Resource_lkiwm"]
+script = ExtResource("2_i7tph")
+label = "X Value"
+control = 0
+shader_var = "x_value"
+
+[sub_resource type="Resource" id="Resource_1qm7o"]
+script = ExtResource("2_i7tph")
+label = "Y Value"
+control = 0
+shader_var = "y_value"
+
+[sub_resource type="Resource" id="Resource_7b3al"]
+script = ExtResource("2_i7tph")
+label = "Use Channels"
+control = 1
+shader_var = "use_channels"
+metadata/_custom_type_script = ExtResource("2_i7tph")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjh1m"]
+shader = ExtResource("2_pxshj")
+shader_parameter/x_value = 1.0
+shader_parameter/y_value = 1.0
+shader_parameter/use_channels = true
+
+[node name="UVs" type="Node2D"]
+
+[node name="ShaderScene" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_jl7st")
+type = "2D"
+sprite = NodePath("../Sprite")
+shader_params = Array[ExtResource("2_i7tph")]([SubResource("Resource_lkiwm"), SubResource("Resource_1qm7o"), SubResource("Resource_7b3al")])
+
+[node name="ActionsLib" type="Node" parent="."]
+script = ExtResource("4_nc62y")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mjh1m")
+texture = ExtResource("2_4cown")
+offset = Vector2(250, 250)

@@ -1,0 +1,27 @@
+{
+	"000_UVs": {
+		"description": "UV Space manipulation",
+		"scenes": [
+			{
+				"id": 0,
+				"image_path": "res://GeneratedImages/0.png",
+				"path": "res://Modules/000_UVs/uvs.tscn"
+			}
+		]
+	},
+	"001_Step": {
+		"description": "Step function",
+		"scenes": [
+			{
+				"id": 1,
+				"image_path": "res://GeneratedImages/1.png",
+				"path": "res://Modules/001_Step/step.tscn"
+			},
+			{
+				"id": 2,
+				"image_path": "res://GeneratedImages/2.png",
+				"path": "res://Modules/001_Step/step_noise.tscn"
+			}
+		]
+	}
+}

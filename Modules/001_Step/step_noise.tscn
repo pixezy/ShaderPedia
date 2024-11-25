@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfl1oyd41ar5v"]
+
+[ext_resource type="Script" path="res://Scripts/shader_scene.gd" id="1_f13ul"]
+[ext_resource type="Script" path="res://Scripts/actions_lib.gd" id="2_eup5x"]
+[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="2_xyis5"]
+[ext_resource type="Shader" path="res://Modules/001_Step/step_noise.gdshader" id="3_f13ul"]
+[ext_resource type="Texture2D" uid="uid://ba67ts6vyoo77" path="res://Sprites/white500.png" id="4_0xr0y"]
+
+[sub_resource type="Resource" id="Resource_0xr0y"]
+script = ExtResource("2_xyis5")
+label = "Step"
+control = 0
+shader_var = "_step"
+metadata/_custom_type_script = ExtResource("2_xyis5")
+
+[sub_resource type="Resource" id="Resource_hqa4i"]
+script = ExtResource("2_xyis5")
+label = "Noise Factor"
+control = 0
+shader_var = "noise_factor"
+metadata/_custom_type_script = ExtResource("2_xyis5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f13ul"]
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eup5x"]
+noise = SubResource("FastNoiseLite_f13ul")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f13ul"]
+shader = ExtResource("3_f13ul")
+shader_parameter/_step = 0.439
+shader_parameter/noise_factor = 0.145
+shader_parameter/_noise = SubResource("NoiseTexture2D_eup5x")
+
+[node name="Step" type="Node2D"]
+
+[node name="ShaderScene" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_f13ul")
+type = "2D"
+sprite = NodePath("../Sprite2D")
+shader_params = Array[ExtResource("2_xyis5")]([SubResource("Resource_0xr0y"), SubResource("Resource_hqa4i")])
+
+[node name="ActionsLib" type="Node" parent="."]
+script = ExtResource("2_eup5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f13ul")
+position = Vector2(250, 250)
+texture = ExtResource("4_0xr0y")
