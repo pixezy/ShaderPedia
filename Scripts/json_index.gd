@@ -6,7 +6,7 @@ var id_counter: int = 0
 var viewport: SubViewport
 
 func _ready() -> void:
-	_process_modules()
+	pass
 
 func _process_modules() -> void:
 	id_counter = 0
