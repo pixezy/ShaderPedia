@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bduqxphov0aiw"]
 
-[ext_resource type="Script" path="res://Scripts/shader_scene.gd" id="1_pkw4h"]
-[ext_resource type="Script" path="res://Scripts/actions_lib.gd" id="2_e61no"]
+[ext_resource type="Script" uid="uid://n3dxdolx1sxt" path="res://Scripts/shader_scene.gd" id="1_pkw4h"]
+[ext_resource type="Script" uid="uid://xdlwf5h6owwk" path="res://Scripts/actions_lib.gd" id="2_e61no"]
 [ext_resource type="Texture2D" uid="uid://ba67ts6vyoo77" path="res://Sprites/white500.png" id="2_p6qr3"]
-[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="2_tg45r"]
-[ext_resource type="Shader" path="res://Modules/001_Step/step.gdshader" id="3_m4n71"]
+[ext_resource type="Script" uid="uid://thn41dv367it" path="res://Scripts/shader_param.gd" id="2_tg45r"]
+[ext_resource type="Shader" uid="uid://mnuadwg1gc0e" path="res://Modules/001_Step/step.gdshader" id="3_m4n71"]
 
 [sub_resource type="Resource" id="Resource_bkktg"]
 script = ExtResource("2_tg45r")
@@ -24,6 +24,7 @@ script = ExtResource("1_pkw4h")
 type = "2D"
 sprite = NodePath("../Sprite2D")
 shader_params = Array[ExtResource("2_tg45r")]([SubResource("Resource_bkktg")])
+description = "The step() function in GLSL is often used to create sharp transitions or thresholds in a 2D sprite shader. It outputs 0 or 1 based on whether the input value is below or above a given edge, enabling effects like binary masks or hard-edged patterns."
 
 [node name="ActionsLib" type="Node" parent="."]
 script = ExtResource("2_e61no")

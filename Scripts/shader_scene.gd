@@ -11,6 +11,7 @@ extends Node
 @export var model3D:MeshInstance3D
 @export var shader_params: Array[ShaderParam]
 @export var scene_params: Array[SceneParam]
+@export var description: String
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "sprite" and type != "2D": 

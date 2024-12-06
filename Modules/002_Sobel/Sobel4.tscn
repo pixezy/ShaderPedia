@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://be8uxl4rffu5g"]
+
+[ext_resource type="Texture2D" uid="uid://d0n658hv2vg4q" path="res://icon.svg" id="1_lk56p"]
+[ext_resource type="Shader" uid="uid://dyiskf0f873a8" path="res://Modules/002_Sobel/Sobel4.gdshader" id="1_wcl1g"]
+[ext_resource type="Script" uid="uid://xdlwf5h6owwk" path="res://Scripts/actions_lib.gd" id="2_wcl1g"]
+[ext_resource type="Script" uid="uid://n3dxdolx1sxt" path="res://Scripts/shader_scene.gd" id="3_ehke1"]
+[ext_resource type="Script" uid="uid://thn41dv367it" path="res://Scripts/shader_param.gd" id="5_ehke1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehke1"]
+shader = ExtResource("1_wcl1g")
+shader_parameter/sobel_value = 1.0
+
+[sub_resource type="Resource" id="Resource_ar24b"]
+script = ExtResource("5_ehke1")
+label = "Sobel Value"
+control = 0
+shader_var = "sobel_value"
+metadata/_custom_type_script = ExtResource("5_ehke1")
+
+[node name="Sobel4" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ehke1")
+position = Vector2(250, 250)
+texture = ExtResource("1_lk56p")
+
+[node name="ActionsLib" type="Node" parent="."]
+script = ExtResource("2_wcl1g")
+
+[node name="ShaderScene" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_ehke1")
+type = "2D"
+sprite = NodePath("../Sprite2D")
+shader_params = Array[ExtResource("5_ehke1")]([SubResource("Resource_ar24b")])
+description = "The sobel4 function is a simplified implementation of the Sobel filter in GLSL, used for detecting edges in an image. This version computes gradients in the x (gx) and y (gy) directions by sampling the texture at four neighboring points (up, down, left, right) relative to the current UV coordinate. "

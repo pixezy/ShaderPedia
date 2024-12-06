@@ -23,5 +23,15 @@
 				"path": "res://Modules/001_Step/step_noise.tscn"
 			}
 		]
+	},
+	"002_Sobel": {
+		"description": "Sobel Filter",
+		"scenes": [
+			{
+				"id": 3,
+				"image_path": "res://GeneratedImages/3.png",
+				"path": "res://Modules/002_Sobel/Sobel4.tscn"
+			}
+		]
 	}
 }

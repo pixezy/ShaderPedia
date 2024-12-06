@@ -9,6 +9,12 @@ extends Control
 @onready var code: Button = %Code
 @onready var innerWindow: Window = %Window
 @onready var text_edit: TextEdit = %TextEdit
+@onready var btn_desc: Button = %Btn_desc
+@onready var description_panel: Panel = %DescriptionPanel
+@onready var description_container: Control = %DescriptionContainer
+@onready var description_label: Label = %DescriptionLabel
+@onready var num_scene_label: Label = %NumSceneLabel
+
 
 var module_name: String = "001_Step"
 
@@ -18,6 +24,7 @@ var current_scene: Node
 var shader_scene: ShaderScene
 var shader_params: Array[ShaderParam]
 var scene_params: Array[SceneParam]
+var panel_visible: bool = false; 
 
 func _ready() -> void:
 	json_data = DataIO.new().readJSON()
@@ -26,6 +33,7 @@ func _ready() -> void:
 	right.pressed.connect(_on_right_pressed)
 	home.pressed.connect(_on_home_pressed)
 	code.pressed.connect(_on_code_pressed)
+	btn_desc.pressed.connect(_on_btn_desc_pressed)
 	innerWindow.close_requested.connect(_on_closewindow_pressed)
 	
 
@@ -47,6 +55,10 @@ func _load_scene() -> void:
 		shader_params = shader_scene.shader_params
 		scene_params = shader_scene.scene_params
 		_load_controls()
+		description_label.text = shader_scene.description
+		num_scene_label.text = "Example " + str(index+1) + " of " + str(json_data[module_name]["scenes"].size())
+		
+		
 	else:
 		shader_params = []
 		scene_params = []
@@ -66,7 +78,7 @@ func _load_controls() -> void:
 		box_controls.add_child(control)
 
 	for scene_param in scene_params:
-		var control = _create_scene_control(scene_param)	
+		var control = _create_scene_control(scene_param)
 		box_controls.add_child(control)
 
 func _create_label(param: ShaderParam) -> Label:
@@ -89,7 +101,7 @@ func _create_shader_control(param: ShaderParam) -> Control:
 		ShaderParam.control_type.CHECKBOX:
 			control = CheckBox.new()
 			control.button_pressed = get_shader_param(param)
-			control.toggled.connect(set_shader_param.bind(param))	
+			control.toggled.connect(set_shader_param.bind(param))
 			# set_shader_param(control.button_pressed, param)
 	return control
 
@@ -102,11 +114,11 @@ func _create_scene_control(param: SceneParam) -> Control:
 	return null
 
 func get_shader_param(param: ShaderParam) -> float:
-	if shader_scene.type == "2D":	
+	if shader_scene.type == "2D":
 		if shader_scene.sprite:
 			return shader_scene.sprite.material.get_shader_parameter(param.shader_var)
-	elif shader_scene.type == "3D":	
-		return shader_scene.model3D.material_override.get_shader_parameter(param.shader_var)	
+	elif shader_scene.type == "3D":
+		return shader_scene.model3D.material_override.get_shader_parameter(param.shader_var)
 	return 0
 
 func set_shader_param(value,param: ShaderParam) -> void:
@@ -116,23 +128,32 @@ func set_shader_param(value,param: ShaderParam) -> void:
 	elif shader_scene.type == "3D":
 		shader_scene.model3D.material_override.set_shader_parameter(param.shader_var, value)
 
-func _on_home_pressed() -> void: 
-	var window = get_tree().get_root()	
+func _on_home_pressed() -> void:
+	var window = get_tree().get_root()
 	window.get_child(0).queue_free()
 	var main = load("res://Scenes/main.tscn").instantiate()
 	window.add_child(main)
 
-func _on_code_pressed() -> void: 
+func _on_code_pressed() -> void:
 	innerWindow.visible = true
 	
 
 func _on_left_pressed() -> void:
-	index = (index - 1) % json_data[module_name]["scenes"].size()
+	index = (index - 1 + json_data[module_name]["scenes"].size()) % json_data[module_name]["scenes"].size()
 	_load_scene()
 
 func _on_right_pressed() -> void:
 	index = (index + 1) % json_data[module_name]["scenes"].size()
 	_load_scene()
+
+func _on_btn_desc_pressed() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)	
+	var target_pos: float = (description_container.position.y + description_panel.size.y if panel_visible
+	 	else description_container.position.y - description_panel.size.y)
+	
+	panel_visible = !panel_visible
+	tween.tween_property(description_container, "position:y", target_pos, 0.5)	
 
 func _on_closewindow_pressed() -> void:
 	innerWindow.visible = false

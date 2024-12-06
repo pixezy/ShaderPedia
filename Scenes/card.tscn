@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjcybvb0hlq3f"]
 
 [ext_resource type="Texture2D" uid="uid://bsgwhbt8u6d5i" path="res://Sprites/9patch_card.png" id="1_7xpro"]
-[ext_resource type="Script" path="res://Scripts/card.gd" id="2_nwpwn"]
-[ext_resource type="Shader" path="res://Shaders/_Main/transition.gdshader" id="3_brehn"]
+[ext_resource type="Script" uid="uid://bnaliy63efpc1" path="res://Scripts/card.gd" id="2_nwpwn"]
+[ext_resource type="Shader" uid="uid://doyw2ko2tfok" path="res://Shaders/_Main/transition.gdshader" id="3_brehn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_brehn"]
 shader = ExtResource("3_brehn")
@@ -74,6 +74,5 @@ layout_mode = 0
 offset_left = 220.0
 offset_top = 280.0
 offset_right = 280.0
-offset_bottom = 311.0
-text = "Go
-"
+offset_bottom = 316.0
+text = "Go"

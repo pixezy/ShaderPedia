@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl4dw0cyh17mq"]
 
-[ext_resource type="Shader" path="res://Shaders/_Main/background.gdshader" id="1_oyg22"]
+[ext_resource type="Shader" uid="uid://bvsmm3wwavnds" path="res://Shaders/_Main/background.gdshader" id="1_oyg22"]
 
 [sub_resource type="Gradient" id="Gradient_56cwu"]
 colors = PackedColorArray(0.977655, 0.977655, 0.977655, 1, 0.78, 0.78, 0.78, 1)

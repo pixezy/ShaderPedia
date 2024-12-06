@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://1ckugevudqmp"]
 
-[ext_resource type="Script" path="res://Scripts/shader_scene.gd" id="1_jl7st"]
+[ext_resource type="Script" uid="uid://n3dxdolx1sxt" path="res://Scripts/shader_scene.gd" id="1_jl7st"]
 [ext_resource type="Texture2D" uid="uid://ba67ts6vyoo77" path="res://Sprites/white500.png" id="2_4cown"]
-[ext_resource type="Script" path="res://Scripts/shader_param.gd" id="2_i7tph"]
-[ext_resource type="Shader" path="res://Modules/000_UVs/UVxy.gdshader" id="2_pxshj"]
-[ext_resource type="Script" path="res://Scripts/actions_lib.gd" id="4_nc62y"]
+[ext_resource type="Script" uid="uid://thn41dv367it" path="res://Scripts/shader_param.gd" id="2_i7tph"]
+[ext_resource type="Shader" uid="uid://dy70o6l6lj3yl" path="res://Modules/000_UVs/UVxy.gdshader" id="2_pxshj"]
+[ext_resource type="Script" uid="uid://xdlwf5h6owwk" path="res://Scripts/actions_lib.gd" id="4_nc62y"]
 
 [sub_resource type="Resource" id="Resource_lkiwm"]
 script = ExtResource("2_i7tph")
@@ -38,6 +38,7 @@ script = ExtResource("1_jl7st")
 type = "2D"
 sprite = NodePath("../Sprite")
 shader_params = Array[ExtResource("2_i7tph")]([SubResource("Resource_lkiwm"), SubResource("Resource_1qm7o"), SubResource("Resource_7b3al")])
+description = "A UV map in a 2D sprite defines how the texture's pixels correspond to the sprite's surface. Typically, UV coordinates are normalized between 0 and 1, matching the texture dimensions directly to the sprite's rectangular shape. In shaders, UVs are used to sample the texture for each fragment of the sprite."
 
 [node name="ActionsLib" type="Node" parent="."]
 script = ExtResource("4_nc62y")

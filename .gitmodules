@@ -1,0 +1,3 @@
+[submodule "pixezy_shaderlib"]
+	path = pixezy_shaderlib
+	url = https://github.com/pixezy/pixezy_shaderlib.git

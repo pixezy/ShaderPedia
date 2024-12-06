@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dj5sahciyn2oj"]
 
-[ext_resource type="Script" path="res://Scripts/viewer.gd" id="1_jtr55"]
+[ext_resource type="Script" uid="uid://bmoe6kxj3rwkp" path="res://Scripts/viewer.gd" id="1_jtr55"]
 [ext_resource type="PackedScene" uid="uid://bl4dw0cyh17mq" path="res://Scenes/background.tscn" id="1_yn7cf"]
 [ext_resource type="StyleBox" uid="uid://bpuoqdoej84jk" path="res://Styles/outline.tres" id="2_b0rci"]
 
@@ -54,6 +54,7 @@ offset_left = 60.0
 offset_top = 300.0
 offset_right = 100.0
 offset_bottom = 340.0
+text = "<"
 
 [node name="Right" type="Button" parent="."]
 layout_mode = 0
@@ -61,6 +62,7 @@ offset_left = 1060.0
 offset_top = 300.0
 offset_right = 1100.0
 offset_bottom = 340.0
+text = ">"
 
 [node name="Home" type="Button" parent="."]
 layout_mode = 0
@@ -68,8 +70,7 @@ offset_left = 140.0
 offset_top = 20.0
 offset_right = 234.0
 offset_bottom = 51.0
-text = "Home
-"
+text = "Home"
 
 [node name="Code" type="Button" parent="."]
 unique_name_in_owner = true
@@ -78,8 +79,7 @@ offset_left = 260.0
 offset_top = 20.0
 offset_right = 354.0
 offset_bottom = 51.0
-text = "Shader
-"
+text = "Shader"
 
 [node name="Window" type="Window" parent="."]
 unique_name_in_owner = true
@@ -95,3 +95,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "This is my code"
+
+[node name="DescriptionContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DescriptionPanel" type="Panel" parent="DescriptionContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DescriptionContainer/DescriptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="DescriptionLabel" type="Label" parent="DescriptionContainer/DescriptionPanel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 3
+
+[node name="Btn_desc" type="Button" parent="DescriptionContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -130.0
+offset_right = 37.0
+offset_bottom = -99.0
+grow_horizontal = 2
+toggle_mode = true
+text = "Description"
+
+[node name="NumSceneLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 699.0
+offset_top = 31.0
+offset_right = 745.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+theme_override_font_sizes/font_size = 18
+text = "Example 1 of 1"
