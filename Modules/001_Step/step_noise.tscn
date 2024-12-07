@@ -11,6 +11,8 @@ script = ExtResource("2_xyis5")
 label = "Step"
 control = 0
 shader_var = "_step"
+min_val = 0.0
+max_val = 1.0
 metadata/_custom_type_script = ExtResource("2_xyis5")
 
 [sub_resource type="Resource" id="Resource_hqa4i"]
@@ -18,6 +20,8 @@ script = ExtResource("2_xyis5")
 label = "Noise Factor"
 control = 0
 shader_var = "noise_factor"
+min_val = 0.0
+max_val = 1.0
 metadata/_custom_type_script = ExtResource("2_xyis5")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_f13ul"]
@@ -39,6 +43,7 @@ script = ExtResource("1_f13ul")
 type = "2D"
 sprite = NodePath("../Sprite2D")
 shader_params = Array[ExtResource("2_xyis5")]([SubResource("Resource_0xr0y"), SubResource("Resource_hqa4i")])
+_name = "Step function + noise"
 description = "The step() function combined with noise in GLSL is used to create sharp transitions with organic or irregular patterns. The noise adds variation to the threshold value of step(), resulting in a distorted or wavy line instead of a perfectly straight edge. "
 
 [node name="ActionsLib" type="Node" parent="."]

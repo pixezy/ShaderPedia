@@ -14,6 +14,7 @@ extends Control
 @onready var description_container: Control = %DescriptionContainer
 @onready var description_label: Label = %DescriptionLabel
 @onready var num_scene_label: Label = %NumSceneLabel
+@onready var title_label: Label = %TitleLabel
 
 
 var module_name: String = "001_Step"
@@ -55,6 +56,7 @@ func _load_scene() -> void:
 		shader_params = shader_scene.shader_params
 		scene_params = shader_scene.scene_params
 		_load_controls()
+		title_label.text = shader_scene._name
 		description_label.text = shader_scene.description
 		num_scene_label.text = "Example " + str(index+1) + " of " + str(json_data[module_name]["scenes"].size())
 		
@@ -72,8 +74,10 @@ func _load_controls() -> void:
 
 	# Create controls for shader_params and scene_params
 	for shader_param in shader_params:
-		var control = _create_shader_control(shader_param)
-		var label = _create_label(shader_param)
+		var label = _create_label()		
+		label.text = shader_param.label + ": " + str(get_shader_param(shader_param))
+		var control:Control = _create_shader_control(shader_param, label)	
+		
 		box_controls.add_child(label)
 		box_controls.add_child(control)
 
@@ -81,27 +85,28 @@ func _load_controls() -> void:
 		var control = _create_scene_control(scene_param)
 		box_controls.add_child(control)
 
-func _create_label(param: ShaderParam) -> Label:
+func _create_label() -> Label:
 	var label = Label.new()
 	label.add_theme_color_override("font_color", Color.BLACK)
-	label.text = param.label
 	return label
 
-func _create_shader_control(param: ShaderParam) -> Control:
+func _create_shader_control(param: ShaderParam, label:Label) -> Control:
 	var control:Control
 	match param.control:
 		ShaderParam.control_type.SLIDER:
 			control = HSlider.new()
-			control.min_value = 0.0
-			control.max_value = 1.0
+			control.min_value = param.min_val
+			control.max_value = param.max_val
 			control.step = 0.01
 			control.value = get_shader_param(param)
-			control.value_changed.connect(set_shader_param.bind(param))
+			control.value_changed.connect(on_control_value_changed.bind(param,label))
+	
 			# set_shader_param(control.value, param)
 		ShaderParam.control_type.CHECKBOX:
 			control = CheckBox.new()
 			control.button_pressed = get_shader_param(param)
-			control.toggled.connect(set_shader_param.bind(param))
+			control.toggled.connect(on_control_value_changed.bind(param,label))
+		
 			# set_shader_param(control.button_pressed, param)
 	return control
 
@@ -121,7 +126,8 @@ func get_shader_param(param: ShaderParam) -> float:
 		return shader_scene.model3D.material_override.get_shader_parameter(param.shader_var)
 	return 0
 
-func set_shader_param(value,param: ShaderParam) -> void:
+func on_control_value_changed(value,param: ShaderParam, label: Label) -> void:
+	label.text = param.label + ": " + str(value)
 	if shader_scene.type == "2D":
 		if shader_scene.sprite:
 			shader_scene.sprite.material.set_shader_parameter(param.shader_var, value)

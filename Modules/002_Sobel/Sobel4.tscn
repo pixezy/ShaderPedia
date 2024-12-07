@@ -15,6 +15,8 @@ script = ExtResource("5_ehke1")
 label = "Sobel Value"
 control = 0
 shader_var = "sobel_value"
+min_val = 0.0
+max_val = 1.0
 metadata/_custom_type_script = ExtResource("5_ehke1")
 
 [node name="Sobel4" type="Node2D"]
@@ -32,4 +34,5 @@ script = ExtResource("3_ehke1")
 type = "2D"
 sprite = NodePath("../Sprite2D")
 shader_params = Array[ExtResource("5_ehke1")]([SubResource("Resource_ar24b")])
+_name = "Sobel filter"
 description = "The sobel4 function is a simplified implementation of the Sobel filter in GLSL, used for detecting edges in an image. This version computes gradients in the x (gx) and y (gy) directions by sampling the texture at four neighboring points (up, down, left, right) relative to the current UV coordinate. "

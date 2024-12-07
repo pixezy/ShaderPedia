@@ -1,11 +1,16 @@
 {
-	"000_UVs": {
-		"description": "UV Space manipulation",
+	"000_Coordinates": {
+		"description": "Coordinate Systems",
 		"scenes": [
 			{
 				"id": 0,
 				"image_path": "res://GeneratedImages/0.png",
-				"path": "res://Modules/000_UVs/uvs.tscn"
+				"path": "res://Modules/000_Coordinates/uvs.tscn"
+			},
+			{
+				"id": 1,
+				"image_path": "res://GeneratedImages/1.png",
+				"path": "res://Modules/000_Coordinates/vertex.tscn"
 			}
 		]
 	},
@@ -13,13 +18,13 @@
 		"description": "Step function",
 		"scenes": [
 			{
-				"id": 1,
-				"image_path": "res://GeneratedImages/1.png",
+				"id": 2,
+				"image_path": "res://GeneratedImages/2.png",
 				"path": "res://Modules/001_Step/step.tscn"
 			},
 			{
-				"id": 2,
-				"image_path": "res://GeneratedImages/2.png",
+				"id": 3,
+				"image_path": "res://GeneratedImages/3.png",
 				"path": "res://Modules/001_Step/step_noise.tscn"
 			}
 		]
@@ -28,8 +33,8 @@
 		"description": "Sobel Filter",
 		"scenes": [
 			{
-				"id": 3,
-				"image_path": "res://GeneratedImages/3.png",
+				"id": 4,
+				"image_path": "res://GeneratedImages/4.png",
 				"path": "res://Modules/002_Sobel/Sobel4.tscn"
 			}
 		]

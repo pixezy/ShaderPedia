@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1px68vuol44x"]
+
+[ext_resource type="Script" uid="uid://n3dxdolx1sxt" path="res://Scripts/shader_scene.gd" id="1_rppk1"]
+[ext_resource type="Script" uid="uid://thn41dv367it" path="res://Scripts/shader_param.gd" id="2_khygv"]
+[ext_resource type="Script" uid="uid://xdlwf5h6owwk" path="res://Scripts/actions_lib.gd" id="3_mnvy3"]
+[ext_resource type="Shader" uid="uid://bld8wy0ve3cx4" path="res://Modules/000_Coordinates/vertex_coords.gdshader" id="4_rppk1"]
+[ext_resource type="Texture2D" uid="uid://d0n658hv2vg4q" path="res://icon.svg" id="5_khygv"]
+
+[sub_resource type="Resource" id="Resource_lkiwm"]
+script = ExtResource("2_khygv")
+label = "Divider"
+control = 0
+shader_var = "divider"
+min_val = 1.0
+max_val = 256.0
+
+[sub_resource type="Resource" id="Resource_1qm7o"]
+script = ExtResource("2_khygv")
+label = "Offset"
+control = 0
+shader_var = "offset"
+min_val = 0.0
+max_val = 0.5
+
+[sub_resource type="Resource" id="Resource_7b3al"]
+script = ExtResource("2_khygv")
+label = "Texture Mix"
+control = 0
+shader_var = "texture_mix"
+min_val = 0.0
+max_val = 1.0
+metadata/_custom_type_script = ExtResource("2_khygv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sioao"]
+shader = ExtResource("4_rppk1")
+shader_parameter/divider = 24.12
+shader_parameter/offset = 0.5
+shader_parameter/texture_mix = 0.5
+
+[node name="Vertex" type="Node2D"]
+
+[node name="ShaderScene" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_rppk1")
+type = "2D"
+sprite = NodePath("../Sprite")
+shader_params = Array[ExtResource("2_khygv")]([SubResource("Resource_lkiwm"), SubResource("Resource_1qm7o"), SubResource("Resource_7b3al")])
+_name = "Vertex Coordinates"
+description = "Vertex coordinates as an alternative to UV coordinates"
+
+[node name="ActionsLib" type="Node" parent="."]
+script = ExtResource("3_mnvy3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sioao")
+position = Vector2(250, 250)
+texture = ExtResource("5_khygv")

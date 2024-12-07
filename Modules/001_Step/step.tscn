@@ -11,6 +11,8 @@ script = ExtResource("2_tg45r")
 label = "Step"
 control = 0
 shader_var = "_step"
+min_val = 0.0
+max_val = 1.0
 metadata/_custom_type_script = ExtResource("2_tg45r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dpfdd"]
@@ -24,6 +26,7 @@ script = ExtResource("1_pkw4h")
 type = "2D"
 sprite = NodePath("../Sprite2D")
 shader_params = Array[ExtResource("2_tg45r")]([SubResource("Resource_bkktg")])
+_name = "Step function"
 description = "The step() function in GLSL is often used to create sharp transitions or thresholds in a 2D sprite shader. It outputs 0 or 1 based on whether the input value is below or above a given edge, enabling effects like binary masks or hard-edged patterns."
 
 [node name="ActionsLib" type="Node" parent="."]
