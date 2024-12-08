@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjcybvb0hlq3f"]
+[gd_scene load_steps=8 format=3 uid="uid://bjcybvb0hlq3f"]
 
 [ext_resource type="Texture2D" uid="uid://bsgwhbt8u6d5i" path="res://Sprites/9patch_card.png" id="1_7xpro"]
 [ext_resource type="Script" uid="uid://bnaliy63efpc1" path="res://Scripts/card.gd" id="2_nwpwn"]
 [ext_resource type="Shader" uid="uid://doyw2ko2tfok" path="res://Shaders/_Main/transition.gdshader" id="3_brehn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brehn"]
+bg_color = Color(0.92, 0.92, 0.92, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_brehn"]
 shader = ExtResource("3_brehn")
@@ -31,14 +34,23 @@ patch_margin_bottom = 10
 script = ExtResource("2_nwpwn")
 
 [node name="Panel" type="Panel" parent="."]
-clip_contents = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 280.0
 offset_bottom = 170.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_brehn")
 
-[node name="Display" type="ColorRect" parent="Panel"]
+[node name="Control" type="Control" parent="Panel"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 258.0
+offset_bottom = 148.0
+
+[node name="Display" type="ColorRect" parent="Panel/Control"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_brehn")
 layout_mode = 0
 offset_top = -50.0

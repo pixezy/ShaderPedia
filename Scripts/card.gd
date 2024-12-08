@@ -6,7 +6,7 @@ var images_paths:Array[String]
 
 @onready var title: Label = $Title
 @onready var description: Label = $Description
-@onready var display: ColorRect = $Panel/Display
+@onready var display: ColorRect = %Display
 @onready var button: Button = $Button
 
 var index:int = 0
