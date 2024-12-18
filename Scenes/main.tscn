@@ -11,7 +11,7 @@ shader_parameter/color = Color(2.88785e-07, 0.565962, 0.809459, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_rfdky"]
 font_names = PackedStringArray("Exo 2")
-font_weight = 575
+font_weight = 700
 font_stretch = 50
 force_autohinter = true
 oversampling = 2.0

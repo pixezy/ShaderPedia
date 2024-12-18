@@ -1,6 +1,6 @@
 {
 	"000_Coordinates": {
-		"description": "Coordinate Systems",
+		"description": "uid://bbinrkiob6wop",
 		"scenes": [
 			{
 				"id": 0,
@@ -36,6 +36,16 @@
 				"id": 4,
 				"image_path": "res://GeneratedImages/4.png",
 				"path": "res://Modules/002_Sobel/Sobel4.tscn"
+			}
+		]
+	},
+	"003_Fresnel": {
+		"description": "Fresnel Effect",
+		"scenes": [
+			{
+				"id": 5,
+				"image_path": "res://GeneratedImages/5.png",
+				"path": "res://Modules/003_Fresnel/fresnel.tscn"
 			}
 		]
 	}

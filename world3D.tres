@@ -1,0 +1,16 @@
+[gd_resource type="World3D" load_steps=4 format=3 uid="uid://b2jiklf4u2ln3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_po4ka"]
+
+[sub_resource type="Sky" id="Sky_n1fsj"]
+sky_material = SubResource("ProceduralSkyMaterial_po4ka")
+
+[sub_resource type="Environment" id="Environment_85b8a"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_n1fsj")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[resource]
+environment = SubResource("Environment_85b8a")
